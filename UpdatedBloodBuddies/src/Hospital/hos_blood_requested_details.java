@@ -1,0 +1,484 @@
+package Hospital;
+
+import ALLMAINFILES.HosNavBar;
+import NGO.*;
+import ALLMAINFILES.NAVBar;
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.HeadlessException;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
+
+public class hos_blood_requested_details extends javax.swing.JFrame {
+
+    String f_id = null;
+
+    public hos_blood_requested_details(String g_id) {
+        initComponents();
+        f_id = g_id;
+        System.out.println(f_id);
+        Image icon = Toolkit.getDefaultToolkit().getImage("C:\\Users\\krishna\\Desktop\\KIIT\\UpdatedBloodBuddies\\src\\ALLMAINFILES\\blood-donation.png");
+        setIconImage(icon);
+        setBounds(-6, -6, 1600, 890);
+        search.setForeground(Color.GRAY);
+        button3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button3.setBackground(new Color(83, 173, 202));
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button3.setBackground(new Color(255, 204, 204));
+            }
+        });
+        button1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button1.setBackground(new Color(83, 173, 202));
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button1.setBackground(new Color(255, 204, 204));
+            }
+        });
+        search.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (search.getText().equals("Search")) {
+                    search.setText("");
+                    search.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (search.getText().isEmpty()) {
+                    search.setForeground(Color.GRAY);
+                    search.setText("Search");
+                }
+            }
+        });
+        try {
+            String myUrl = "jdbc:mysql://db4free.net:3306/project?zeroDateTimeBehavior=CONVERT_TO_NULL";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (Connection conn = DriverManager.getConnection(myUrl, "rootze", "root1717")) {
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("select requested_id,o_positive,o_negative,ab_positive,ab_negative,a_positive,a_negative,b_positive,b_negative,msg,status from hospital_blood_requested where hospital_id='" + f_id + "'");
+                Object columnHeaders[] = {"Requested ID", "O+ in unit", "O- in unit", "AB+ in unit", "AB- in unit", "A+ in unit", "A- in unit", "B+ in unit", "B- in unit", "Message", "Status"};
+                ResultSetMetaData rsmd;
+                DefaultTableModel dtm = new DefaultTableModel();
+                rsmd = (ResultSetMetaData) rs.getMetaData();
+                int count = rsmd.getColumnCount();
+                dtm.setColumnIdentifiers(columnHeaders);
+                while (rs.next()) {
+                    Vector row = new Vector();
+                    for (int i = 1; i <= count; i++) {
+                        row.addElement(rs.getString(i));
+                    }
+                    dtm.addRow(row);
+                }
+                jTable1.setModel(dtm);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+//            JOptionPane.showMessageDialog(this, e);
+            System.out.println("Hospital Blood Requested Details");
+        }
+        Socket sock = new Socket();
+        InetSocketAddress addr = new InetSocketAddress("www.google.com", 80);
+        try {
+            sock.connect(addr, 3000);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(rootPane, "Please connect to Internet,Otherwise data won't get updated on any page!");
+        } finally {
+            try {
+                sock.close();
+            } catch (IOException e) {
+            }
+        }
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel1 = new javax.swing.JLabel();
+        combo = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        button1 = new swing.Button();
+        search = new javax.swing.JTextField();
+        button2 = new swing.Button();
+        button3 = new swing.Button();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("BLOOD TABLE");
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Hospital/NormalSearch_1.png"))); // NOI18N
+
+        combo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Requested ID", "O+ in unit", "O- in unit", "AB+ in unit", "AB- in unit", "A+ in unit", "A- in unit", "B+ in unit", "B- in unit", "Message", "Status"}));
+        combo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboItemStateChanged(evt);
+            }
+        });
+        combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Requested ID", "O+ in mL", "O-", "AB+", "AB-", "A+", "A-", "B+", "B-", "Message"
+            }
+        ));
+        jTable1.setMaximumSize(new java.awt.Dimension(1500, 900));
+        jTable1.setMinimumSize(new java.awt.Dimension(1500, 900));
+        jTable1.setPreferredSize(new java.awt.Dimension(1500, 900));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        button1.setBackground(new java.awt.Color(255, 204, 204));
+        button1.setForeground(new java.awt.Color(0, 0, 0));
+        button1.setText("Find");
+        button1.setFocusable(false);
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+
+        search.setText("Search");
+
+        button2.setBackground(new java.awt.Color(255, 204, 204));
+        button2.setForeground(new java.awt.Color(0, 0, 0));
+        button2.setText("Back");
+        button2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button2ActionPerformed(evt);
+            }
+        });
+
+        button3.setBackground(new java.awt.Color(255, 204, 204));
+        button3.setForeground(new java.awt.Color(0, 0, 0));
+        button3.setText("Reload");
+        button3.setFocusable(false);
+        button3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1601, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 885, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)))
+                .addGap(6, 6, 6))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(combo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+     private void filter(String fill, String text) {
+        try {
+            String myUrl = "jdbc:mysql://db4free.net:3306/project?zeroDateTimeBehavior=CONVERT_TO_NULL";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (Connection conn = DriverManager.getConnection(myUrl, "rootze", "root1717")) {
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery("select requested_id,o_positive,o_negative,ab_positive,ab_negative,a_positive,a_negative,b_positive,b_negative,msg,status from hospital_blood_requested where hospital_id='" + f_id + "' and " + fill + " like '" + text + "%'");
+                Object columnHeaders[] = {"Requested ID", "O+ in unit", "O- in unit", "AB+ in unit", "AB- in unit", "A+ in unit", "A- in unit", "B+ in unit", "B- in unit", "Message", "Status"};
+                com.mysql.cj.jdbc.result.ResultSetMetaData rsmd;
+                DefaultTableModel dtm = new DefaultTableModel();
+                rsmd = (com.mysql.cj.jdbc.result.ResultSetMetaData) rs.getMetaData();
+                int count = rsmd.getColumnCount();
+                dtm.setColumnIdentifiers(columnHeaders);
+                int rowcount = 0;
+                while (rs.next()) {
+                    Vector row = new Vector();
+                    for (int i = 1; i <= count; i++) {
+                        row.addElement(rs.getString(i));
+                    }
+                    dtm.addRow(row);
+                    rowcount = rs.getRow();
+                }
+                if (rowcount < 1) {
+                    JOptionPane.showMessageDialog(this, "No records found!", "Data", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
+                jTable1.setModel(dtm);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+//            JOptionPane.showMessageDialog(this, e);
+            System.out.println("Hospital Blood Requested Details");
+        }
+    }
+
+    private void comboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboActionPerformed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            if (search.getText().isEmpty() || search.getText().equals("Search")) {
+                JOptionPane.showMessageDialog(this, "What do you want to search?", "Search", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            System.out.println(combo.getSelectedItem());
+            if (combo.getSelectedItem() == "Requested ID") {
+                filter("requested_id", search.getText());
+            }
+            if (combo.getSelectedItem() == "O+ in unit") {
+                filter("o_positive", search.getText());
+            }
+            if (combo.getSelectedItem() == "O- in unit") {
+                filter("o_negative", search.getText());
+            }
+            if (combo.getSelectedItem() == "AB+ in unit") {
+                filter("ab_positive", search.getText());
+            }
+            if (combo.getSelectedItem() == "AB- in unit") {
+                filter("ab_negative", search.getText());
+            }
+            if (combo.getSelectedItem() == "A+ in unit") {
+                filter("a_positive", search.getText());
+            }
+            if (combo.getSelectedItem() == "A- in unit") {
+                filter("a_negative", search.getText());
+            }
+            if (combo.getSelectedItem() == "B+ in unit") {
+                filter("b_positive", search.getText());
+            }
+            if (combo.getSelectedItem() == "B- in unit") {
+                filter("b_negative", search.getText());
+            }
+            if (combo.getSelectedItem() == "Message") {
+                filter("msg", search.getText());
+            }
+            if (combo.getSelectedItem() == "Status") {
+                filter("status", search.getText());
+            }
+        } catch (Exception e) {
+            System.out.println("Hospital Blood Requested Details");
+        }
+
+    }//GEN-LAST:event_button1ActionPerformed
+
+    private void button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button2ActionPerformed
+        HosNavBar s = new HosNavBar();
+        s.l1.setText(f_id);
+        s.l1.setVisible(false);
+        this.dispose();
+        s.setVisible(true);
+    }//GEN-LAST:event_button2ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+
+        try {
+            String buttons[] = {"Received", "Cancel request", "Close"};
+            jTable1.setRowSelectionAllowed(true);
+            DefaultTableModel table_data_fetch = (DefaultTableModel) jTable1.getModel();
+            int selectedRowIndex = jTable1.getSelectedRow();
+            int r_id = Integer.parseInt(table_data_fetch.getValueAt(selectedRowIndex, 0).toString());
+            int n = JOptionPane.showOptionDialog(
+                    this,
+                    "Requested ID:  " + r_id,
+                    "Details",
+                    JOptionPane.OK_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    buttons,
+                    0);
+            if (n == 0) {
+                try {
+                    String myUrl0 = "jdbc:mysql://db4free.net:3306/project?zeroDateTimeBehavior=CONVERT_TO_NULL";
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    try (Connection conn0 = DriverManager.getConnection(myUrl0, "rootze", "root1717")) {
+                        String sqlUpdate = "update hospital_blood_requested "
+                                + "set status='Received' "
+                                + "WHERE requested_id = ? and status='Transferred'";
+                        PreparedStatement pstmt = conn0.prepareStatement(sqlUpdate);
+                        pstmt.setInt(1, r_id);
+                        int count = pstmt.executeUpdate();
+                        if (count > 0) {
+                            JOptionPane.showMessageDialog(this, "Successfully done!", "Received", JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Looks like hospital has already cancelled it!", "Received", JOptionPane.WARNING_MESSAGE);
+                        }
+                    }
+                } catch (HeadlessException | ClassNotFoundException | SQLException e) {
+                    JOptionPane.showMessageDialog(this, "Looks like hospital has already cancelled it!", "Received", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            }
+            if (n == 1) {
+                try {
+                    String myUrl1 = "jdbc:mysql://db4free.net:3306/project?zeroDateTimeBehavior=CONVERT_TO_NULL";
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    try (Connection conn1 = DriverManager.getConnection(myUrl1, "rootze", "root1717")) {
+                        String sqlUpdate = "update hospital_blood_requested "
+                                + "set status='Cancelled' "
+                                + "WHERE requested_id = ? and status='Requested'";
+                        PreparedStatement pstmt = conn1.prepareStatement(sqlUpdate);
+                        pstmt.setInt(1, r_id);
+                        int count = pstmt.executeUpdate();
+                        if (count > 0) {
+                            JOptionPane.showMessageDialog(this, "Request cancelled successfully!", "Request", JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Looks like hospital has already received it!", "Request", JOptionPane.WARNING_MESSAGE);
+                        }
+                    }
+                } catch (HeadlessException | ClassNotFoundException | SQLException e) {
+                    JOptionPane.showMessageDialog(this, "Looks like hospital has already received it!", "Request", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        } catch (HeadlessException e1) {
+//            JOptionPane.showMessageDialog(this, e1, "Data", JOptionPane.WARNING_MESSAGE);
+            System.out.println("Hospital Blood Requested Details");
+
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void comboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboItemStateChanged
+
+    private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
+        // TODO add your handling code here:
+        new hos_blood_requested_details(f_id).setVisible(true);
+        setVisible(false);
+        dispose();
+
+    }//GEN-LAST:event_button3ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("FlatLaf Light".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(hos_blood_requested_details.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(hos_blood_requested_details.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(hos_blood_requested_details.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(hos_blood_requested_details.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> {
+            String str = null;
+            new hos_blood_requested_details(str).setVisible(true);
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private swing.Button button1;
+    private swing.Button button2;
+    private swing.Button button3;
+    private javax.swing.JComboBox<String> combo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField search;
+    // End of variables declaration//GEN-END:variables
+}

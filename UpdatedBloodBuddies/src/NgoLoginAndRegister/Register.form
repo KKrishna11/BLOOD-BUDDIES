@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9">
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+    </Property>
+  </Properties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="street" max="32767" attributes="0"/>
+                  <Component id="jLabel1" pref="215" max="32767" attributes="0"/>
+                  <Component id="button1" max="32767" attributes="0"/>
+                  <Component id="user_name" pref="215" max="32767" attributes="0"/>
+                  <Component id="email" max="32767" attributes="0"/>
+                  <Component id="password" max="32767" attributes="0"/>
+                  <Component id="ngo_name" alignment="0" max="32767" attributes="0"/>
+                  <Component id="city" alignment="0" max="32767" attributes="0"/>
+                  <Component id="pin_code" alignment="0" max="32767" attributes="0"/>
+                  <Component id="phone" alignment="1" max="32767" attributes="0"/>
+                  <Component id="stt" alignment="1" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="54" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jLabel1" min="-2" pref="44" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="ngo_name" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="user_name" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="street" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="city" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="pin_code" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="phone" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="email" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="password" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="stt" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="button1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="17" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="swing.TextField" name="ngo_name">
+      <Properties>
+        <Property name="hint" type="java.lang.String" value="NGO Name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Monospaced" size="24" style="3"/>
+        </Property>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Sign Up"/>
+      </Properties>
+    </Component>
+    <Component class="swing.TextField" name="email">
+      <Properties>
+        <Property name="hint" type="java.lang.String" value="Email"/>
+      </Properties>
+    </Component>
+    <Component class="swing.TextField" name="user_name">
+      <Properties>
+        <Property name="hint" type="java.lang.String" value="Username"/>
+      </Properties>
+    </Component>
+    <Component class="swing.Button" name="button1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="66" red="33" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Sign Up"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="button1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="swing.Password" name="password">
+      <Properties>
+        <Property name="hint" type="java.lang.String" value="Password"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passwordActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="swing.TextField" name="city">
+      <Properties>
+        <Property name="hint" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="&quot;City&quot;" type="code"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cityActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="swing.TextField" name="pin_code">
+      <Properties>
+        <Property name="hint" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="&quot;Pincode&quot;" type="code"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pin_codeActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="swing.TextField" name="phone">
+      <Properties>
+        <Property name="hint" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="&quot;Phone&quot;" type="code"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="swing.TextField" name="street">
+      <Properties>
+        <Property name="hint" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="&quot;Street&quot;" type="code"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="streetActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="stt">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;State&quot;,&#xa;    &quot;Andhra Pradesh&quot;,&#xa;    &quot;Arunachal Pradesh&quot;,&#xa;    &quot;Assam&quot;,&#xa;    &quot;Bihar&quot;,&#xa;    &quot;Chhattisgarh&quot;,&#xa;    &quot;Goa&quot;,&#xa;    &quot;Gujarat&quot;,&#xa;    &quot;Haryana&quot;,&#xa;    &quot;Himachal Pradesh&quot;,&#xa;    &quot;Jharkhand&quot;,&#xa;    &quot;Karnataka&quot;,&#xa;    &quot;Kerala&quot;,&#xa;    &quot;Madhya Pradesh&quot;,&#xa;    &quot;Maharashtra&quot;,&#xa;    &quot;Manipur&quot;,&#xa;    &quot;Meghalaya&quot;,&#xa;    &quot;Mizoram&quot;,&#xa;    &quot;Nagaland&quot;,&#xa;    &quot;Odisha&quot;,&#xa;    &quot;Punjab&quot;,&#xa;    &quot;Rajasthan&quot;,&#xa;    &quot;Sikkim&quot;,&#xa;    &quot;Tamil Nadu&quot;,&#xa;    &quot;Telangana&quot;,&#xa;    &quot;Tripura&quot;,&#xa;    &quot;Uttar Pradesh&quot;,&#xa;    &quot;Uttarakhand&quot;,&#xa;    &quot;West Bengal&quot;, })" type="code"/>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sttActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+  </SubComponents>
+</Form>
