@@ -37,3 +37,11 @@ https://github.com/KKrishna11/BLOODBUDDIES/assets/97391972/4768e279-860f-4887-9d
          
 **Database:** MySQL
 
+
+
+## Screenshots
+
+![App Screenshot](https://drive.google.com/drive/folders/1n8sbnNKbfaJMYjp-L3ygFu46Igac65Bs)
+
+
+
