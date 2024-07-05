@@ -23,5 +23,11 @@ https://github.com/KKrishna11/BLOODBUDDIES/assets/97391972/3ac2116d-22e2-43c3-8d
 ## USER WEBSITE
 https://github.com/KKrishna11/BLOODBUDDIES/assets/97391972/4768e279-860f-4887-9d5f-5aba14e1cbf6
 
+Tech Stack
 
+Blood Buddies website: • Html • Tailwind CSS • React Js • Express Js
+
+Blood Bank Management System: • Java
+
+Database: MySQL
 
