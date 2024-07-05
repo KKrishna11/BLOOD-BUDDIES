@@ -12,15 +12,15 @@ A link between the hospital and NGO is created via the blood bank management sys
 ## Demo
 
 
-
+## NGO
 https://github.com/KKrishna11/BLOODBUDDIES/assets/97391972/0e3ad6d3-9e29-40a0-b18f-0fac3f8c057a
 
 
-
+## HOSPITAL
 https://github.com/KKrishna11/BLOODBUDDIES/assets/97391972/3ac2116d-22e2-43c3-8dee-74ac9a113cef
 
 
-
+## USER WEBSITE
 https://github.com/KKrishna11/BLOODBUDDIES/assets/97391972/4768e279-860f-4887-9d5f-5aba14e1cbf6
 
 
