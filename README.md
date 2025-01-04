@@ -1,6 +1,8 @@
 
 # Blood Buddies   ❤️
 
+# watch Demo video ↓
+
 The goal of this project is to create a system for managing blood donors and blood banks  that may be used to donate blood. The Blood Bank Management System can be used to obtain information about nearby blood donors who belong to the same blood group to assist those who require blood in an emergency. People who are interested in donating blood can register on the blood donor website with the aid of Blood Donor. The Website displays the location of the nearby Blood camp so that the Donor can easily get there.
 
 There are two main elements to the Blood Bank Management System: NGO and hospital.
